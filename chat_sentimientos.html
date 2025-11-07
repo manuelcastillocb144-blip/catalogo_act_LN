@@ -205,8 +205,8 @@
     </a>
 
     <header class="header">
-        <p class="tema-number">TEMA 01</p>
-        <h1>Abrir Imagen con Python</h1>
+        <p class="tema-number">TEMA 12</p>
+        <h1>Chatbot con sentimientos basico</h1>
     </header>
 
     <div class="container">
@@ -214,7 +214,7 @@
             <h2 class="section-title">Código del Ejemplo</h2>
             <div class="code-container">
                 <div class="code-header">
-                    <span class="code-filename">abrir_imagen.py</span>
+                    <span class="code-filename">chat_sentimientos.py</span>
                     <button class="copy-btn" onclick="copiarCodigo()">Copiar</button>
                 </div>
                 <div class="code-content">
@@ -331,50 +331,44 @@ while True:
             <h2 class="section-title">Glosario de Funciones</h2>
             <div class="glossary-grid">
                 <div class="glossary-item">
-                    <div class="glossary-function">cargar_imagen(ruta)</div>
+                    <div class="glossary-function">googletrans</div>
                     <div class="glossary-description">
-                        Carga una imagen desde la ruta del sistema de archivos especificada. 
-                        Retorna un objeto de imagen de OpenCV o None si falla.
+                        Es una biblioteca de Python que permite la traducción de textos mediante la API de Google Translate
                     </div>
                 </div>
 
                 <div class="glossary-item">
-                    <div class="glossary-function">mostrar_imagen(imagen, titulo)</div>
+                    <div class="glossary-function">translator</div>
                     <div class="glossary-description">
-                        Despliega la imagen en una ventana con el título especificado. 
-                        La ventana permanece abierta hasta que se presione una tecla.
+                        Es el nombre de la clase utilizada googletranspara realizar la traducción
                     </div>
                 </div>
 
                 <div class="glossary-item">
-                    <div class="glossary-function">obtener_dimensiones(imagen)</div>
+                    <div class="glossary-function">while true</div>
                     <div class="glossary-description">
-                        Extrae y retorna las dimensiones de la imagen como tupla: 
-                        altura, ancho y número de canales de color.
+                        Es una estructura de control en Python que crea un bucle que se ejecuta indefinidamente, a menos que se use la instrucción breakpara salir de él.
                     </div>
                 </div>
 
                 <div class="glossary-item">
-                    <div class="glossary-function">cv2.imread()</div>
+                    <div class="glossary-function">if</div>
                     <div class="glossary-description">
-                        Función de OpenCV que lee una imagen desde un archivo. 
-                        Soporta múltiples formatos como JPG, PNG, BMP, etc.
+                        Inicia una sentencia condicional que ejecuta un bloque de código solo si una condición es verdadera
                     </div>
                 </div>
 
                 <div class="glossary-item">
-                    <div class="glossary-function">cv2.imshow()</div>
+                    <div class="glossary-function">Textblob</div>
                     <div class="glossary-description">
-                        Función de OpenCV que muestra una imagen en una ventana nueva. 
-                        Requiere cv2.waitKey() para mantener la ventana abierta.
+                        TextBlob es una biblioteca de Python para el procesamiento de datos textuales. Proporciona una API sencilla para adentrarse en tareas comunes de procesamiento del lenguaje natural
                     </div>
                 </div>
 
                 <div class="glossary-item">
-                    <div class="glossary-function">cv2.destroyAllWindows()</div>
+                    <div class="glossary-function">elif</div>
                     <div class="glossary-description">
-                        Cierra todas las ventanas de OpenCV que están abiertas. 
-                        Útil para liberar recursos después de mostrar imágenes.
+                        Es una forma común de controlar el flujo de un programa , lo que te permite ejecutar bloques de código específicos.
                     </div>
                 </div>
             </div>
@@ -398,4 +392,5 @@ while True:
         }
     </script>
 </body>
+
 </html>
