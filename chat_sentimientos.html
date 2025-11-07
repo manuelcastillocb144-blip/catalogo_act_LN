@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema - Lenguaje Natural con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #ff0000, #00ff00, #0000ff) 1;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .tema-number {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #00ff00;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .code-container {
+            background-color: #0a0a0a;
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #ff0000, #00ff00, #0000ff) 1;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-header {
+            background-color: #111;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-filename {
+            color: #aaa;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .copy-btn {
+            background-color: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        code {
+            color: #fff;
+        }
+
+        .keyword { color: #ff0066; }
+        .string { color: #00ff88; }
+        .comment { color: #666; }
+        .function { color: #00aaff; }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .glossary-item {
+            background-color: #111;
+            border: 2px solid #333;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glossary-item:hover {
+            border-color: #00ff00;
+            transform: translateY(-5px);
+        }
+
+        .glossary-function {
+            font-family: 'Courier New', monospace;
+            color: #00aaff;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .glossary-description {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .code-content {
+                padding: 1rem;
+            }
+
+            pre {
+                font-size: 0.85rem;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Volver al catálogo
+    </a>
+
+    <header class="header">
+        <p class="tema-number">TEMA 01</p>
+        <h1>Abrir Imagen con Python</h1>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Código del Ejemplo</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-filename">abrir_imagen.py</span>
+                    <button class="copy-btn" onclick="copiarCodigo()">Copiar</button>
+                </div>
+                <div class="code-content">
+                    <pre><code>#>>>>>>>>>>>>>>>>>>>>EJEMPLO DE CHAT BOT CON LISTAS BASICO<<<<<<<<<<<<<<<<<<<<<<<
+import random
+from textblob import TextBlob
+from googletrans import Translator
+
+#Lista de saludos y respuestas
+saludos=["hola","que tal","buenos dias","buenas tardes","buen dia",]
+respuesta_saludos=["hola, como estas",
+                   "¿Como puedo ayudarte?",
+                   "hola, como te va",
+                   "Que hay",
+                   "hola, mi rey"]
+
+#Lista de despedidas y respuestas
+despedida=["adios","bye","gracias","nos vemos","hasta luego","salir"]
+respuesta_despedida=["adios, hasta pronto",
+                     "fue un placer ayudarte",
+                     "cuidate",
+                     "nos vemos luego",
+                     "bye"]
+
+pregunta1="que haces"
+pregunta2="te gusta hablar conmigo"
+pregunta3=["puedes contarme un chiste",
+           "cuentame un chiste",
+           "puedes contarme otro chiste"]
+
+respuesta1=["Aqui contigo,listo para hablar",
+            "esperando que desees algo",
+            "en este momento listo para hablar contigo"]
+respuesta2=["Claro que si",
+            "Me gusta hablar contigoo¡",
+            "es interesante hablar contigo"]
+respuesta3=["Claro¡¡¡¡¡ Porque la gallina cruzo la calle?\n Para llegar al otro lado JAJAJAJJA",
+            "Claroo¡¡¡ Por que la ballena no subio a la combi?\n porque iba llena AKJKAJKJAKJA",
+            "Claro, Como haces que un pan hable?\n mojandolo (pan blando)"]
+
+pregunta_nombre=["como te llamas",
+                 "cual es tu nombre",
+                 "quien eres"]
+respuesta_nombre=["Me llamo chato tu chatbot",
+                  "Soy chato el mejor chatbot",
+                  "Me conocen como chato",
+                  "Soy chato tu chat bot favorito"]
+
+respuesta_neutro=["No encuentro un sentimiento a tu oracion",
+                  "No puedo identificar un sentimiento en el texto",
+                  "Vaya, al parecer lo que dices no tiene un sentimiento"]
+
+respuesta_negativo=["Lamento que te sientas triste",
+                    "Lo lamento, si lo deseas puedes hablar con alguien",
+                    "Siento mucho que te sientas mal"]
+
+respuesta_muy_negativo=["Lamento que te sientas asi de mal,si lo deseas puedes platicarlo "
+                        "con alguien cercano",
+                        "Siento mucho que te sientas asi,si deseas puedes escribir lo que sientes aunque "
+                        "aun no pueda decifrar mensajes complejos"]
+
+respuesta_positivo=["Me alegra que estes bien",
+                    "Que bien¡¡¡¡¡",
+                    "Que bueno,me alegro¡¡¡"]
+
+respuestas_muy_positivo=["!!!Me encanta que estes bien¡¡¡",
+                         "!!!!Perfectooo¡¡",
+                         "Me alegro,deseas algo mas"]
+
+#Mensaje de bienvenida del chat
+print("Hola soy chato, tu chatbot de confianza, si deseas terminar escibre 'salir'")
+
+while True:
+    usuario=input("Tu: ").lower().strip()
+
+    if usuario in saludos:
+        print("Chatbot: ",random.choice(respuesta_saludos),"\n Como estas hoy?")
+        translator = Translator()
+        text = input("Tu: ")
+        traduccion = translator.translate(text, dest='en').text
+
+        analizar = TextBlob(traduccion)
+        sentimiento = analizar.sentiment  # Analizar el sentimiento con sentiment
+
+        print("Texto: ", text)
+
+        if sentimiento.polarity == 0:
+            print("Chatbot: ",random.choice(respuesta_neutro))
+        elif sentimiento.polarity >= -0.5 and sentimiento.polarity < 0:
+            print("Chatbot: ",random.choice(respuesta_negativo))
+        elif sentimiento.polarity < -0.5:
+            print("Chatbot: ",random.choice(respuesta_muy_negativo))
+        elif sentimiento.polarity > 0 and sentimiento.polarity <= 0.5:
+            print("Chatbot: ",random.choice(respuesta_positivo))
+        elif sentimiento.polarity > 0.5:
+            print("Chatbot: ",random.choice(respuestas_muy_positivo))
+    elif usuario in pregunta1:
+        print("chatbot: ",random.choice(respuesta1))
+    elif usuario in pregunta2:
+        print("chatbot: ",random.choice(respuesta2))
+    elif usuario in pregunta3:
+        print("chatbot: ",random.choice(respuesta3))
+    elif usuario in pregunta_nombre:
+        print("chatbot: ",random.choice(respuesta_nombre))
+    elif usuario in despedida:
+        print("Chatbot: ",random.choice(respuesta_despedida))
+        break
+</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Glosario de Funciones</h2>
+            <div class="glossary-grid">
+                <div class="glossary-item">
+                    <div class="glossary-function">cargar_imagen(ruta)</div>
+                    <div class="glossary-description">
+                        Carga una imagen desde la ruta del sistema de archivos especificada. 
+                        Retorna un objeto de imagen de OpenCV o None si falla.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">mostrar_imagen(imagen, titulo)</div>
+                    <div class="glossary-description">
+                        Despliega la imagen en una ventana con el título especificado. 
+                        La ventana permanece abierta hasta que se presione una tecla.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">obtener_dimensiones(imagen)</div>
+                    <div class="glossary-description">
+                        Extrae y retorna las dimensiones de la imagen como tupla: 
+                        altura, ancho y número de canales de color.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.imread()</div>
+                    <div class="glossary-description">
+                        Función de OpenCV que lee una imagen desde un archivo. 
+                        Soporta múltiples formatos como JPG, PNG, BMP, etc.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.imshow()</div>
+                    <div class="glossary-description">
+                        Función de OpenCV que muestra una imagen en una ventana nueva. 
+                        Requiere cv2.waitKey() para mantener la ventana abierta.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.destroyAllWindows()</div>
+                    <div class="glossary-description">
+                        Cierra todas las ventanas de OpenCV que están abiertas. 
+                        Útil para liberar recursos después de mostrar imágenes.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copiarCodigo() {
+            const codigo = document.querySelector('.code-content code').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '¡Copiado!';
+                btn.style.color = '#00ff00';
+                btn.style.borderColor = '#00ff00';
+                setTimeout(() => {
+                    btn.textContent = 'Copiar';
+                    btn.style.color = '#fff';
+                    btn.style.borderColor = '#333';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
