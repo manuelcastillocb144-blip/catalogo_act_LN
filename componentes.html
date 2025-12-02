@@ -1,1 +1,367 @@
-componentes.html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema - Lenguaje Natural con Python</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            padding: 3rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #ff0000, #00ff00, #0000ff) 1;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .tema-number {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: #666;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #00ff00;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.03em;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #333;
+        }
+
+        .code-container {
+            background-color: #0a0a0a;
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #ff0000, #00ff00, #0000ff) 1;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-header {
+            background-color: #111;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .code-filename {
+            color: #aaa;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .copy-btn {
+            background-color: transparent;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+
+        .code-content {
+            padding: 1.5rem;
+            overflow-x: auto;
+        }
+
+        pre {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        code {
+            color: #fff;
+        }
+
+        .keyword { color: #ff0066; }
+        .string { color: #00ff88; }
+        .comment { color: #666; }
+        .function { color: #00aaff; }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .glossary-item {
+            background-color: #111;
+            border: 2px solid #333;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glossary-item:hover {
+            border-color: #00ff00;
+            transform: translateY(-5px);
+        }
+
+        .glossary-function {
+            font-family: 'Courier New', monospace;
+            color: #00aaff;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .glossary-description {
+            color: #aaa;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .back-link {
+                position: static;
+                margin-bottom: 1rem;
+                justify-content: center;
+            }
+
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .code-content {
+                padding: 1rem;
+            }
+
+            pre {
+                font-size: 0.85rem;
+            }
+
+            .glossary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Volver al catálogo
+    </a>
+
+    <header class="header">
+        <p class="tema-number">TEMA 12</p>
+        <h1>Componentes arduino</h1>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Código del Ejemplo</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="code-filename">componentes_arduino.py</span>
+                    <button class="copy-btn" onclick="copiarCodigo()">Copiar</button>
+                </div>
+                <div class="code-content">
+                    <pre><code>#Crear un chatbot, que nos ayude a aprender sobre los
+#componentes de arduino en una lista cargar todos los componentes
+#enlistados en roborealm, y preguntar
+#al chatbot que componente desea aprender y
+#este te debe contestar el concepto del componente seleccionado
+#si al escribir el componente lo escribes mal, el chatbot
+#te debe indicar que no entiende lo que escribiste
+#y pedirte que escribas correctamente el componente
+
+componentes=[
+  { "nombre": "Protoboard", "concepto": "Tablero para crear circuitos sin necesidad de soldar." },
+  { "nombre": "Protoboard de expansión", "concepto": "Extensión adicional para aumentar el área de conexión." },
+  { "nombre": "Módulo LCD", "concepto": "Pantalla para mostrar texto y datos del proyecto." },
+  { "nombre": "Sensor ultrasónico", "concepto": "Mide distancia mediante ondas de ultrasonido." },
+  { "nombre": "Arduino Nano", "concepto": "Placa microcontroladora pequeña y versátil." },
+  { "nombre": "Módulo de joystick", "concepto": "Control analógico para dirección y selección." },
+  { "nombre": "Controlador de motor paso a paso", "concepto": "Permite controlar motores paso a paso." },
+  { "nombre": "Motor paso a paso", "concepto": "Motor que gira por pasos precisos." },
+  { "nombre": "Servomotor", "concepto": "Motor que controla posición mediante PWM." },
+  { "nombre": "Motor de 3 a 6 voltios", "concepto": "Motor DC pequeño para proyectos básicos." },
+  { "nombre": "Aspa de ventilador", "concepto": "Hélice utilizada para generar flujo de aire." },
+  { "nombre": "Módulo de relé de 5V", "concepto": "Interruptor electrónico para controlar cargas externas." },
+  { "nombre": "Potenciómetro", "concepto": "Resistencia variable ajustable manualmente." },
+  { "nombre": "Buzzer pasivo", "concepto": "Genera tonos mediante señales PWM." },
+  { "nombre": "Buzzer activo", "concepto": "Emite sonido constante al recibir corriente." },
+  { "nombre": "Botones", "concepto": "Interruptores momentáneos para entrada de usuario." },
+  { "nombre": "Pantalla de 4 dígitos y 7 segmentos", "concepto": "Muestra números utilizando 4 dígitos LED." },
+  { "nombre": "Pantalla de 1 dígito y 7 segmentos", "concepto": "Muestra un solo número LED." },
+  { "nombre": "Interruptores de membrana", "concepto": "Teclado plano con botones tipo membrana." },
+  { "nombre": "Control Remoto", "concepto": "Dispositivo IR para enviar comandos a sensores receptores." },
+  { "nombre": "Registro de turnos 74HC595", "concepto": "Expansor de pines para controlar múltiples salidas." },
+  { "nombre": "Fotoresistencia", "concepto": "Sensor de luz basado en variación de resistencia." },
+  { "nombre": "Cables tipo Dupont", "concepto": "Cables para conexiones macho/macho, macho/hembra o hembra/hembra." },
+  { "nombre": "Cable USB", "concepto": "Permite alimentar y programar la placa Arduino." },
+  { "nombre": "Clip de batería con conector", "concepto": "Adaptador para conectar baterías de 9V." },
+  { "nombre": "Resistor", "concepto": "Limita el paso de corriente en el circuito." },
+  { "nombre": "LED RGB", "concepto": "LED capaz de emitir luz roja, verde y azul." },
+  { "nombre": "LEDs", "concepto": "Diodos emisores de luz de un solo color." },
+  { "nombre": "Circuito integrado L293D", "concepto": "Driver para controlar motores DC y stepper." },
+  { "nombre": "Sensor de inclinación", "concepto": "Detecta cambios de posición o inclinación." },
+  { "nombre": "Transistor PN2222", "concepto": "Transistor NPN usado como interruptor o amplificador." },
+  { "nombre": "Diodo 1N4007", "concepto": "Protege contra corriente inversa." },
+  { "nombre": "Termistor", "concepto": "Resistencia que varía con la temperatura." },
+  { "nombre": "Cable jumper o cable de puente", "concepto": "Cable para unir puntos en la protoboard." },
+  { "nombre": "Adaptador de poder", "concepto": "Fuente externa para alimentar placas y módulos." }
+]
+
+
+print("CHATBOT DE COMPONENTES DE ARDUINO")
+print("----------------------------------------------")
+print("Componentes disponibles")
+for c in componentes:
+    print("-",c["nombre"])
+
+while True:
+    componente=input("\n¿Sobre que componente deseas aprender?").strip().lower()
+
+    encontrado= False
+
+    for x in componentes:
+        if x["nombre"].lower() == componente:
+            print(f"\nConcepto de '{x['nombre']}':")
+            print(x["concepto"])
+            encontrado= True
+            break
+
+    if encontrado:
+         break
+    else:
+         print("no entiendo ese componente")
+         print("Por favor, verifica la ortografia e intentalo de nuevo")</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Glosario de Funciones</h2>
+            <div class="glossary-grid">
+                <div class="glossary-item">
+                    <div class="glossary-function"></div>
+                    <div class="glossary-description">
+                        Carga una imagen desde la ruta del sistema de archivos especificada. 
+                        Retorna un objeto de imagen de OpenCV o None si falla.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">mostrar_imagen(imagen, titulo)</div>
+                    <div class="glossary-description">
+                        Despliega la imagen en una ventana con el título especificado. 
+                        La ventana permanece abierta hasta que se presione una tecla.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">obtener_dimensiones(imagen)</div>
+                    <div class="glossary-description">
+                        Extrae y retorna las dimensiones de la imagen como tupla: 
+                        altura, ancho y número de canales de color.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.imread()</div>
+                    <div class="glossary-description">
+                        Función de OpenCV que lee una imagen desde un archivo. 
+                        Soporta múltiples formatos como JPG, PNG, BMP, etc.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.imshow()</div>
+                    <div class="glossary-description">
+                        Función de OpenCV que muestra una imagen en una ventana nueva. 
+                        Requiere cv2.waitKey() para mantener la ventana abierta.
+                    </div>
+                </div>
+
+                <div class="glossary-item">
+                    <div class="glossary-function">cv2.destroyAllWindows()</div>
+                    <div class="glossary-description">
+                        Cierra todas las ventanas de OpenCV que están abiertas. 
+                        Útil para liberar recursos después de mostrar imágenes.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function copiarCodigo() {
+            const codigo = document.querySelector('.code-content code').innerText;
+            navigator.clipboard.writeText(codigo).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.textContent = '¡Copiado!';
+                btn.style.color = '#00ff00';
+                btn.style.borderColor = '#00ff00';
+                setTimeout(() => {
+                    btn.textContent = 'Copiar';
+                    btn.style.color = '#fff';
+                    btn.style.borderColor = '#333';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
